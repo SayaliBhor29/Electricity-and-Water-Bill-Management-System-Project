@@ -1,0 +1,30 @@
+
+create database muncipal;
+use muncipal;
+sudo -u postgres psql
+
+
+drop table    applicant      ;
+drop table       elebill        ;
+drop table       housetax       ;
+drop table       complaint      ;
+drop table       waterbill      ;
+
+ create table applicant (indexno int Primary key auto_increment, apname varchar(100) not null, username varchar(100) not null, password varchar(100) not null,gender varchar(20) not null, addhar int not null, phoneno varchar(10) not null, address varchar(100) not null, pin int not null);
+
+create table waterbill(wbid serial Primary key,indexno int not null REFERENCES applicant(indexno), noofunits int not null,year varchar(8) not null, tamt int not null,wdate date not null);
+
+
+create table elebill(ebid  serial Primary key,indexno int not null REFERENCES applicant(indexno),noofunits int not null,solarunits int not null,finalunit int not null,year varchar(7) not null,tamt int not null,edate date not null);
+
+create table housetax(htaxid serial Primary key,indexno int not null,year varchar(7) not null,amt int not null,sanitamt int not null,tamt int not null,hdate date not null);
+
+
+create table complaint(compid serial primary key,name varchar(100) not null, address varchar(100) not null,subject varchar(100) not null,descr varchar(100) not null);    
+
+
+
+
+
+
+
